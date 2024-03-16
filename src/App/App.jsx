@@ -1,10 +1,10 @@
 import styles from "./style.module.css";
-import ContactForm from "../examples/ContactForm/ContactForm";
+import FlightBooker from "../examples/FlightBooker/FlightBooker";
 
 const App = () => {
     return (
         <div className={styles.container}>
-            <ContactForm />
+            <FlightBooker />
         </div>
     );
 }
