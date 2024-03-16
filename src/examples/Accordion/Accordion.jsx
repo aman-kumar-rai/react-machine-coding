@@ -37,7 +37,7 @@ const Accordion = ({ items = [] }) => {
                                 aria-controls={panelId}
                             >
                                 <span>{item.heading}</span>
-                                <span aria-hidden={true}>{isOpen ? "Close" : "Open"}</span>
+                                <span aria-hidden={true} className={isOpen ? `${styles.icon} ${styles.icon_rotated}` : styles.icon}></span>
                             </button>
                             {
                                 isOpen && (
