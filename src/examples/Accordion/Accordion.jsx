@@ -18,8 +18,45 @@ const Accordion = ({ items = [] }) => {
         setOpenItems(_openItems);
     }
 
+    const handleKeyDown = (event) => {
+        const activeSectionId = document.activeElement.getAttribute("data-section-id");
+
+        if (activeSectionId === null) {
+            return;
+        }
+
+        let activeSectionIndex = -1, nextIndex = -1, nextActiveSectionId;
+        // getting the index of active accordion item
+        activeSectionIndex = items.findIndex((item) => item.id === activeSectionId);
+
+        switch (event.code) {
+            case "ArrowUp":
+                nextIndex = activeSectionIndex - 1 >= 0 ? activeSectionIndex - 1 : items.length - 1;
+                break;
+            case "ArrowDown":
+                nextIndex = (activeSectionIndex + 1) % items.length;
+                break;
+            case "Home":
+                nextIndex = 0;
+                break;
+            case "End":
+                nextIndex = items.length - 1;
+                break;
+            default:
+                return;
+        }
+
+        nextActiveSectionId = items[nextIndex].id;
+        const nextActiveHeaderEl = document.querySelector(`[data-section-id='${nextActiveSectionId}']`);
+        nextActiveHeaderEl.focus();
+
+    }
+
     return (
-        <div>
+        <div
+            className={styles.container}
+            onKeyDown={handleKeyDown}
+        >
             {
                 items.map(item => {
                     const isOpen = openItems.has(item.id);
