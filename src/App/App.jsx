@@ -1,6 +1,8 @@
+import Accordion from "../examples/Accordion/Accordion";
+
 const App = () => {
     return (
-        <h1>Hello World</h1>
+        <Accordion />
     )
 }
 
