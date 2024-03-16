@@ -1,10 +1,10 @@
-import ProgressBars from "../examples/ProgressBars/ProgressBars";
 import styles from "./style.module.css";
+import ContactForm from "../examples/ContactForm/ContactForm";
 
 const App = () => {
     return (
         <div className={styles.container}>
-            <ProgressBars />
+            <ContactForm />
         </div>
     );
 }

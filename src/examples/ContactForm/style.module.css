@@ -1,0 +1,15 @@
+.form {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 300px;
+}
+
+.label {
+    display: flex;
+    flex-flow: column nowrap;
+    margin-bottom: 1rem;
+}
+
+.btn {
+    width: 100px;
+}
