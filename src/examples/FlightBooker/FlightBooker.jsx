@@ -73,6 +73,7 @@ const FlightBooker = () => {
                 type="date"
                 name="date"
                 value={formData.date}
+                aria-label="Flight date"
                 onChange={handleChangeInput}
             />
             {formData.mode === "return" && (
@@ -80,6 +81,7 @@ const FlightBooker = () => {
                     type="date"
                     name="returnDate"
                     value={formData.returnDate}
+                    aria-label="Return flight date"
                     onChange={handleChangeInput}
                 />
             )}
