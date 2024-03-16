@@ -6,6 +6,11 @@ const Accordion = ({ items = [] }) => {
     const [openItems, setOpenItems] = useState(new Set());
     const accordionId = useId();
 
+    const focusOnSection = (id) => {
+        const sectionEl = document.querySelector(`[data-section-id='${id}']`);
+        sectionEl.focus();
+    }
+
     const handleClickToggle = (event) => {
         const id = event.currentTarget.getAttribute("data-section-id");
         const _openItems = new Set(openItems);
@@ -20,12 +25,12 @@ const Accordion = ({ items = [] }) => {
 
     const handleKeyDown = (event) => {
         const activeSectionId = document.activeElement.getAttribute("data-section-id");
+        let activeSectionIndex = -1, nextIndex = -1, nextActiveSectionId = "";
 
         if (activeSectionId === null) {
             return;
         }
 
-        let activeSectionIndex = -1, nextIndex = -1, nextActiveSectionId;
         // getting the index of active accordion item
         activeSectionIndex = items.findIndex((item) => item.id === activeSectionId);
 
@@ -47,9 +52,7 @@ const Accordion = ({ items = [] }) => {
         }
 
         nextActiveSectionId = items[nextIndex].id;
-        const nextActiveHeaderEl = document.querySelector(`[data-section-id='${nextActiveSectionId}']`);
-        nextActiveHeaderEl.focus();
-
+        focusOnSection(nextActiveSectionId);
     }
 
     return (
