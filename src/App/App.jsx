@@ -1,13 +1,10 @@
-import ProgressBar from "../examples/Progressbar/Progressbar";
+import ProgressBars from "../examples/ProgressBars/ProgressBars";
+import styles from "./style.module.css";
 
 const App = () => {
     return (
-        <div style={{
-            margin: "1rem"
-        }}>
-            <ProgressBar
-                progress={80}
-            />
+        <div className={styles.container}>
+            <ProgressBars />
         </div>
     );
 }
