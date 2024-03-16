@@ -1,59 +1,46 @@
 import { useState } from "react";
 import styles from "./style.module.css";
 
-const Accordion = () => {
-
-    const [sections, setSections] = useState([
-        {
-            heading: "HTML",
-            content: "The HyperText Markup Language or HTML is the standard markup language for documents designed to be displayed in a web browser.",
-            id: "HTML",
-            isOpen: false,
-        },
-        {
-            heading: "CSS",
-            content: "Cascading Style Sheets is a style sheet language used for describing the presentation of a document written in a markup language such as HTML or XML.",
-            id: "CSS",
-            isOpen: false,
-        },
-        {
-            heading: "JS",
-            content: "JavaScript, often abbreviated as JS, is a programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS.",
-            id: "JS",
-            isOpen: false,
-        },
-    ]);
+const Accordion = ({ items = [] }) => {
+    const [openItems, setOpenItems] = useState(new Set());
 
     const handleClickToggle = (event) => {
-        const id = event.target.getAttribute("data-section-id");
-        setSections(prevSections => {
-            return prevSections.map(section => {
-                return section.id === id ? {
-                    ...section,
-                    isOpen: !section.isOpen
-                } : section;
-            })
-        });
+        const id = event.currentTarget.getAttribute("data-section-id");
+        const _openItems = new Set(openItems);
+        if (_openItems.has(id)) {
+            _openItems.delete(id);
+        }
+        else {
+            _openItems.add(id);
+        }
+        setOpenItems(_openItems);
     }
 
     return (
         <div>
             {
-                sections.map(section => (
-                    <section className={styles.section} key={section.id}>
-                        <header className={styles.header}>
-                            <span>{section.heading}</span>
-                            <button data-section-id={section.id} onClick={handleClickToggle}>{section.isOpen ? "Close" : "Open"}</button>
-                        </header>
-                        {
-                            section.isOpen && (
-                                <main>
-                                    {section.content}
-                                </main>
-                            )
-                        }
-                    </section>
-                ))
+                items.map(item => {
+                    const isOpen = openItems.has(item.id);
+                    return (
+                        <section className={styles.section} key={item.id}>
+                            <button
+                                className={styles.header}
+                                data-section-id={item.id}
+                                onClick={handleClickToggle}
+                            >
+                                <span>{item.heading}</span>
+                                <span>{isOpen ? "Close" : "Open"}</span>
+                            </button>
+                            {
+                                isOpen && (
+                                    <main>
+                                        {item.content}
+                                    </main>
+                                )
+                            }
+                        </section>
+                    )
+                })
             }
         </div >
     )
