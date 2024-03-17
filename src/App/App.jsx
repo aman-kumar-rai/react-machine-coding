@@ -1,10 +1,10 @@
 import styles from "./style.module.css";
-import FlightBooker from "../examples/FlightBooker/FlightBooker";
+import GenerateTable from "../examples/GenerateTable/GenerateTable";
 
 const App = () => {
     return (
         <div className={styles.container}>
-            <FlightBooker />
+            <GenerateTable />
         </div>
     );
 }
