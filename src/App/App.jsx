@@ -1,10 +1,10 @@
 import styles from "./style.module.css";
-import GenerateTable from "../examples/GenerateTable/GenerateTable";
+import HolyGrail from "../examples/HolyGrail/HolyGrail";
 
 const App = () => {
     return (
         <div className={styles.container}>
-            <GenerateTable />
+            <HolyGrail />
         </div>
     );
 }
