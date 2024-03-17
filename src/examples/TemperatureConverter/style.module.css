@@ -1,0 +1,11 @@
+.form {
+    display: flex;
+    flex-flow: row nowrap;
+    column-gap: 1rem;
+}
+
+.input_group {
+    display: flex;
+    flex-flow: column nowrap;
+    row-gap: 0.5rem;
+}

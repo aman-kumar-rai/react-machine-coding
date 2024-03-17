@@ -1,10 +1,10 @@
 import styles from "./style.module.css";
-import HolyGrail from "../examples/HolyGrail/HolyGrail";
+import TemperatureConverter from "../examples/TemperatureConverter/TemperatureConverter";
 
 const App = () => {
     return (
         <div className={styles.container}>
-            <HolyGrail />
+            <TemperatureConverter />
         </div>
     );
 }
