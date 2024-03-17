@@ -1,10 +1,10 @@
 import styles from "./style.module.css";
-import TemperatureConverter from "../examples/TemperatureConverter/TemperatureConverter";
+import MortgageCalculator from "../examples/MortgageCalculator/MortgageCalculator";
 
 const App = () => {
     return (
         <div className={styles.container}>
-            <TemperatureConverter />
+            <MortgageCalculator />
         </div>
     );
 }
