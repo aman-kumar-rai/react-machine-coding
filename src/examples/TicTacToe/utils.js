@@ -1,8 +1,8 @@
-const getInitialBoardState = (rows, cols) => {
+const getInitialBoardState = (size) => {
     const boardState = {};
 
-    for(let i=0; i<rows; i++) {
-        for(let j=0; j<cols; j++) {
+    for(let i=0; i<size; i++) {
+        for(let j=0; j<size; j++) {
             boardState[`${i}_${j}`] = "";
         }
     }

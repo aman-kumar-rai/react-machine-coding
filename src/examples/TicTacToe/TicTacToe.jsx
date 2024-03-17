@@ -2,9 +2,9 @@ import { useState, useMemo } from "react";
 import { getInitialBoardState } from "./utils";
 import styles from "./style.module.css";
 
-const TicTacToe = ({ rows = 3, cols = 3 }) => {
+const TicTacToe = ({ size = 3 }) => {
 
-    const [boardState, setBoardState] = useState(() => getInitialBoardState(rows, cols));
+    const [boardState, setBoardState] = useState(() => getInitialBoardState(size));
     const [nextPlayer, setNextPlayer] = useState("X");
     const [isGameOver, setIsGameOver] = useState(false);
     const [winner, setWinner] = useState("");
@@ -27,7 +27,7 @@ const TicTacToe = ({ rows = 3, cols = 3 }) => {
     }
 
     const handleResetBoard = () => {
-        setBoardState(getInitialBoardState(rows, cols));
+        setBoardState(getInitialBoardState(size));
         setNextPlayer("X");
         setWinner("");
         setIsGameOver(false);
@@ -64,13 +64,13 @@ const TicTacToe = ({ rows = 3, cols = 3 }) => {
             }</p>
             <div className={styles.board}>
                 {
-                    new Array(rows).fill(1).map((_, rowIndex) => {
+                    new Array(size).fill(1).map((_, rowIndex) => {
                         return (
                             <div
                                 key={rowIndex}
                                 className={styles.row}
                             >
-                                {new Array(cols).fill(1).map((_, colIndex) => {
+                                {new Array(size).fill(1).map((_, colIndex) => {
                                     return (
                                         <button
                                             key={colIndex}
