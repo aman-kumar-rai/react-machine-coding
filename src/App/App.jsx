@@ -1,11 +1,11 @@
 import styles from "./style.module.css";
-import SignupForm from "../examples/SignupForm/SignupForm";
+import Stopwatch from "../examples/Stopwatch/Stopwatch";
 
 const App = () => {
 
     return (
         <div className={styles.container}>
-            <SignupForm />
+            <Stopwatch />
         </div>
     );
 }
