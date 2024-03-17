@@ -8,6 +8,7 @@ const TicTacToe = ({ size = 3 }) => {
     const [nextPlayer, setNextPlayer] = useState("X");
     const [isGameOver, setIsGameOver] = useState(false);
     const [winner, setWinner] = useState("");
+    const [movesCount, setMovesCount] = useState(0);
 
     const checkIsGameOver = (board, player) => {
         if (((board["0_0"] === player) && (board["0_1"] === player) && (board["0_2"] === player)) ||
@@ -46,10 +47,12 @@ const TicTacToe = ({ size = 3 }) => {
             setWinner(nextPlayer);
             setIsGameOver(true);
         }
-        else {
-            setNextPlayer((prevNextPlayer) => prevNextPlayer === "X" ? "O" : "X")
+        if (movesCount + 1 === size * size) {
+            setIsGameOver(true);
         }
 
+        setMovesCount(prevMovesCount => prevMovesCount + 1);
+        setNextPlayer((prevNextPlayer) => prevNextPlayer === "X" ? "O" : "X")
         setBoardState(_boardState);
     }
 
@@ -57,7 +60,7 @@ const TicTacToe = ({ size = 3 }) => {
         <div className={styles.container}>
             <p className={styles.info}>{
                 isGameOver ? (
-                    `Player ${winner} won`
+                    winner !== "" ? `Player ${winner} won` : "It's a draw"
                 ) : (
                     `Player ${nextPlayer} turn`
                 )
