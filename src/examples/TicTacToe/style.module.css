@@ -1,0 +1,56 @@
+.container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    row-gap: 1rem;
+}
+
+.board {
+    display: flex;
+    flex-flow: column nowrap;
+    row-gap: 5px;
+}
+
+.info {
+    font-size: 1.2rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.row {
+    display: flex;
+    flex-flow: row nowrap;
+    column-gap: 5px;
+}
+
+.col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border: none;
+    background-color: #eaeaea;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.col[data-value='X'] {
+    background-color: dodgerblue;
+    color: white;
+}
+
+.col[data-value='O'] {
+    background-color: seagreen;
+    color: white;
+}
+
+.reset_btn {
+    font-size: 1rem;
+    padding: 10px 20px;
+    background-color: purple;
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
