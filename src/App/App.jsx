@@ -29,6 +29,7 @@ const App = () => {
                 items={items}
                 defaultValue={items[2].id}
             />
+            <button>Dummy Button</button>
         </div>
     );
 }
