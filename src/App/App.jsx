@@ -1,14 +1,11 @@
 import styles from "./style.module.css";
-import TicTacToe from "../examples/TicTacToe/TicTacToe";
+import TodoList from "../examples/TodoList/TodoList";
 
 const App = () => {
 
     return (
         <div className={styles.container}>
-            <TicTacToe
-                rows={3}
-                cols={3}
-            />
+            <TodoList />
         </div>
     );
 }
