@@ -1,11 +1,17 @@
 import styles from "./style.module.css";
-import TodoList from "../examples/TodoList/TodoList";
+import Tweet from "../examples/Tweet/Tweet";
 
 const App = () => {
 
     return (
         <div className={styles.container}>
-            <TodoList />
+            <Tweet
+                thumbnail={"https://xsgames.co/randomusers/avatar.php?g=male"}
+                name="Aman Kumar"
+                handle="hshoyo"
+                date="Mar 15"
+                tweet="I will be the best developer on the face of the planet"
+            />
         </div>
     );
 }
