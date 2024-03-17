@@ -78,7 +78,7 @@ const TicTacToe = ({ size = 3 }) => {
                                             data-id={`${rowIndex}_${colIndex}`}
                                             className={styles.col}
                                             onClick={handleClickCol}
-                                            disabled={boardState[`${rowIndex}_${colIndex}`] !== ""}
+                                            disabled={(boardState[`${rowIndex}_${colIndex}`] !== "") || isGameOver}
                                         >
                                             {boardState[`${rowIndex}_${colIndex}`]}
                                         </button>
