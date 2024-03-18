@@ -1,11 +1,11 @@
 import styles from "./style.module.css";
-import Stopwatch from "../examples/Stopwatch/Stopwatch";
+import UndoableCounter from "../examples/UndoableCounter/UndoableCounter";
 
 const App = () => {
 
     return (
         <div className={styles.container}>
-            <Stopwatch />
+            <UndoableCounter />
         </div>
     );
 }
