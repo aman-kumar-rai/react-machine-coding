@@ -1,11 +1,12 @@
+import ProgressBars from "../examples/ProgressBars/ProgressBars";
 import styles from "./style.module.css";
-import UndoableCounter from "../examples/UndoableCounter/UndoableCounter";
+
 
 const App = () => {
 
     return (
         <div className={styles.container}>
-            <UndoableCounter />
+            <ProgressBars />
         </div>
     );
 }

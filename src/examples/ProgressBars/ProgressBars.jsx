@@ -1,48 +1,51 @@
 import { useState, useEffect } from "react";
-import ProgressBar from "../ProgressBar/ProgressBar.jsx";
 import styles from "./style.module.css";
 
 
-const ProgressBars = () => {
-
-    const [bars, setBars] = useState([]);
+const ProgressBar = () => {
+    const [isComponentRendered, setIsComponentRendered] = useState(false);
 
     useEffect(() => {
-        console.log("Run once only")
-        const intervalId = setInterval(() => {
-            setBars((prevBars) => {
-                return prevBars.map(prevBar => {
-                    return {
-                        ...prevBar,
-                        progress: prevBar.progress < 100 ? prevBar.progress + 10 : prevBar.progress
-                    }
-                })
-            })
-        }, 200)
-
-
-        return function cleanup() {
-            clearInterval(intervalId);
-        }
+        setIsComponentRendered(true);
     }, [])
 
+    return (
+        <div className={styles.bar}>
+            <div
+                className={isComponentRendered
+                    ? `${styles.bar_fill} ${styles.bar_fill_complete}`
+                    : styles.bar_fill
+                }
+            >
+            </div>
+        </div>
+    )
+}
 
-    const handleClickAddBar = () => {
-        setBars(prevBars => (
-            [...prevBars, {
-                id: prevBars.length,
-                progress: 0
-            }]
-        ))
+
+const ProgressBars = () => {
+    const [bars, setBars] = useState([]);
+
+    const handleAddBar = () => {
+        setBars(prevBars => {
+            return [
+                ...prevBars,
+                prevBars.length
+            ]
+        })
     }
 
     return (
         <div className={styles.container}>
-            <button className={styles.btn} onClick={handleClickAddBar}>Add</button>
+            <button onClick={handleAddBar} className={styles.add_btn}>Add</button>
             <div className={styles.bars_container}>
-                {bars.map((bar) => (
-                    <ProgressBar progress={bar.progress} key={bar.id} />
-                ))}
+                {
+                    bars.map((bar) => (
+                        <ProgressBar
+                            key={bar}
+                        />
+                    ))
+                }
             </div>
         </div>
     )
