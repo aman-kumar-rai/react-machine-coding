@@ -6,7 +6,9 @@ const App = () => {
 
     return (
         <div className={styles.container}>
-            <ProgressBars />
+            <ProgressBars
+                concurrency={2}
+            />
         </div>
     );
 }

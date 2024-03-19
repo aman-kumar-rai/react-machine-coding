@@ -30,7 +30,7 @@ const ProgressBar = ({ isEmpty, handleOnComplete }) => {
 }
 
 
-const ProgressBars = () => {
+const ProgressBars = ({ concurrency = 1 }) => {
     const [filledBarsCount, setFilledBarsCount] = useState(0);
     const [bars, setBars] = useState([]);
 
@@ -38,7 +38,7 @@ const ProgressBars = () => {
         setBars(prevBars => {
             return [
                 ...prevBars,
-                prevBars.length
+                prevBars.length + 1
             ]
         })
     }
@@ -55,7 +55,7 @@ const ProgressBars = () => {
                     bars.map((bar) => (
                         <ProgressBar
                             key={bar}
-                            isEmpty={bar > filledBarsCount}
+                            isEmpty={bar > filledBarsCount + concurrency}
                             handleOnComplete={handleOnComplete}
                         />
                     ))
