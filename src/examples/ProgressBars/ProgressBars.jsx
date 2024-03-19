@@ -2,12 +2,18 @@ import { useState, useEffect } from "react";
 import styles from "./style.module.css";
 
 
-const ProgressBar = () => {
+const ProgressBar = ({ isEmpty, handleOnComplete }) => {
     const [isComponentRendered, setIsComponentRendered] = useState(false);
 
     useEffect(() => {
-        setIsComponentRendered(true);
-    }, [])
+        if (isEmpty || isComponentRendered) {
+            return;
+        }
+        else {
+            setIsComponentRendered(true);
+        }
+
+    }, [isEmpty, isComponentRendered])
 
     return (
         <div className={styles.bar}>
@@ -16,6 +22,7 @@ const ProgressBar = () => {
                     ? `${styles.bar_fill} ${styles.bar_fill_complete}`
                     : styles.bar_fill
                 }
+                onTransitionEnd={handleOnComplete}
             >
             </div>
         </div>
@@ -24,6 +31,7 @@ const ProgressBar = () => {
 
 
 const ProgressBars = () => {
+    const [filledBarsCount, setFilledBarsCount] = useState(0);
     const [bars, setBars] = useState([]);
 
     const handleAddBar = () => {
@@ -35,6 +43,10 @@ const ProgressBars = () => {
         })
     }
 
+    const handleOnComplete = () => {
+        setFilledBarsCount(prevFilledBarsCount => prevFilledBarsCount + 1);
+    }
+
     return (
         <div className={styles.container}>
             <button onClick={handleAddBar} className={styles.add_btn}>Add</button>
@@ -43,6 +55,8 @@ const ProgressBars = () => {
                     bars.map((bar) => (
                         <ProgressBar
                             key={bar}
+                            isEmpty={bar > filledBarsCount}
+                            handleOnComplete={handleOnComplete}
                         />
                     ))
                 }
